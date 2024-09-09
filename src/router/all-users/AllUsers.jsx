@@ -19,6 +19,12 @@ function AllUsers() {
     setSelectedUser(null);
   };
 
+  window.addEventListener("keydown", (e) => {
+    if (e.which === 27) {
+      setShow(false);
+    }
+  });
+
   return (
     <div className="all__users">
       {user.length ? <Users data={user} setSelectedUser={setSelectedUser} setShow={setShow} /> : <Empty />}
@@ -54,9 +60,7 @@ function AllUsers() {
                 onChange={(e) => setSelectedUser({ ...selectedUser, gender: e.target.value })}
                 required
               >
-                <option value="" disabled>
-                  Gender
-                </option>
+                <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
